@@ -1,0 +1,58 @@
+<div ng-init="cg.init()"></div>
+<div class="searchBar form-group">
+</div>
+
+<div class="leftPaneList">	
+	<div style="margin: 5px" ng-show="cg.categoriesLoading">
+		<i class="fa fa-refresh fa-spin"></i>
+	</div>	
+	<div ng-repeat="cat in cg.categories" style="margin-top: 5px">
+		<p style="width: 150px">
+			<span class="questionSelect" ng-click="cg.selectedCategory = cat; cg.selectCategory()">{{cat.name}}</span>
+		</p>
+	</div>
+</div>	
+
+<div style="display: inline-block; vertical-align: top; margin-left: 10px" ng-show="cg.selectedCategory !== null">
+    <div class="rowContainer">
+		<div class="leftLabel algTop">Name*</div>
+		<div class="rightContent">
+			<input type="text" class="form-control" ng-model="cg.selectedCategory.name" />
+		</div>
+		<div class="tip" title="The name of the category"></div>
+	</div>
+    <div class="rowContainer">
+		<div class="leftLabel algTop"></div>
+		<div class="rightContent" style="margin-top: 8px">
+			<button class="btn btn-sm btn-primary" 
+			ng-disabled="cg.saveDisabled()"
+			ng-click="cg.saveCategory()">Save</button>
+		</div>		
+
+        <div class="rightContent" style="margin-top: 8px; margin-left: 4px">
+			<button class="btn btn-sm btn-default" 
+            ng-show="cg.selectedCategory.id === null"
+			ng-click="cg.cancel()">Cancel</button>
+		</div>
+        
+        <div class="rightContent" style="margin-top: 8px; margin-left: 4px">
+			<button class="btn btn-sm btn-default" 
+			ng-disabled="cg.saveDisabled()"
+            ng-show="cg.selectedCategory.id !== null"
+			ng-click="cg.deleteCategory()">Archive</button>
+		</div>	
+	</div>
+	<div class="rowContainer">
+		<div class="leftLabel algTop">Assosiated Terms</div>
+		<div class="termsPaneList">
+			<div style="margin: 5px" ng-show="cg.categoryTermsLoading">
+				<i class="fa fa-refresh fa-spin"></i>
+			</div>	
+			<div ng-repeat="term in cg.selectedCategoryTerms" style="margin-top: 5px;" ng-show="!cg.categoryTermsLoading">
+				<p style="width: 150px">
+					<span>{{term.value}}</span>
+				</p>
+			</div>		
+		</div>
+	</div>
+</div>

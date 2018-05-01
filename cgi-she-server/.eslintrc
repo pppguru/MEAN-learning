@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "modules" : true,
+      "impliedStrict": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+
+  "extends": [
+    "eslint:recommended",
+    "plugin:flowtype/recommended"
+  ],
+  
+  "globals": {
+    "expect": true
+  },
+
+  "env" : {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+
+  "plugins" : [
+    "babel",
+    "flowtype"
+  ],
+
+  "rules": {
+    "babel/generator-star-spacing": 1,
+    "babel/new-cap": 1,
+    "babel/array-bracket-spacing": 1,
+    "babel/object-shorthand": 1,
+    "babel/arrow-parens": 0,
+    "babel/no-await-in-loop": 1,
+    "babel/flow-object-type": 1,
+    "arrow-spacing" : 1,
+    "no-this-before-super": 2,
+    "semi" : 1
+  }
+}

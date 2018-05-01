@@ -1,0 +1,34 @@
+<h3>Profile Information</h3>
+<div style="margin-top: 10px">
+    <div class="row">
+        <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="a.account.firstName" placeholder="first name" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="a.account.lastName" placeholder="last name" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="a.account.email" placeholder="email" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <input type="checkbox" ng-model="a.resetPassword" /> Reset Password
+        </div>
+    </div>
+    <div class="row" ng-show="a.resetPassword">
+        <div class="col-xs-2">
+            <input type="password" class="form-control" 
+            ng-model="a.password" placeholder="password" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <buttn class="btn btn-sm btn-primary" ng-click="a.save()">Save</buttn>
+        </div>
+    </div>
+</div>

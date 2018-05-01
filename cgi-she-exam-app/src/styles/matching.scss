@@ -1,0 +1,34 @@
+@import 'app';
+
+.m {margin-bottom: 2.5px}
+
+.mFrame {border: 1px solid lightgray; padding: 8px; border-radius: 4px; margin-top: 15px}
+
+.mtext {display: table-cell; vertical-align: middle; padding: 4px; cursor: pointer}
+
+.topgroup {margin-bottom: 7px; display: table; text-align: center; width: 100%}
+.group{margin-bottom: 12px; display: table; text-align: center; width: 100%;
+    &:hover {
+        opacity: .5;
+    }
+}
+
+.spanishtext {
+    @extend .mtext;
+            background-color: blanchedalmond; color: #231f20
+}
+
+.text {
+    @extend .mtext;
+            background-color: lightblue; color: #231f20
+}
+
+.dragbars {float: left; background-color: transparent; vertical-align: middle;}
+.checkterm {float: left; vertical-align: middle; margin-left: 4px}
+
+.bottommatchedtext {
+    @extend .mtext;
+    background-color: forestgreen; color: white; cursor: default
+}
+
+.undo {color: black; cursor: pointer; display: table-cell; padding-left: 20px}

@@ -1,0 +1,88 @@
+<div id="myDiv">
+  <!--HEADER-->
+  <div class="header">
+    <div class="bg-color">
+      <header id="main-header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarLinks">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+
+            <a class="navbar-brand" routerLink="home">
+              <img src="/assets/img/Certified_Spanish_Logo_white_Resize.png" class="cgiLogo" alt="Commong Ground International" title="Common Ground International"
+              />
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarLinks">
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 0px">
+              <li class="nav-link"><a href="https://certifiedspanish.com/about-us/" title="About">About</a></li>
+              <li class="nav-link"><a href="https://certifiedspanish.com/contact-us/" title="Contact Us">Contact</a></li>
+              <li class="nav-link"><a href=" https://certifiedspanish.com/faq/" title="FAQ">FAQ</a></li>
+              <li *ngIf="!loggedIn()" class="nav-link">
+                <a routerLink="login">
+                  <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+              </li>
+              <li *ngIf="!loggedIn()" class="nav-link">
+                <a routerLink="registerstart">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+              </li>
+              <li *ngIf="loggedIn()" class="nav-link">
+                <a routerLink="examstart">
+                  <i class="fa fa-laptop" aria-hidden="true"></i> Take an Exam
+                </a>
+              </li>
+              <li *ngIf="studyAccess()" class="nav-link">
+                <a routerLink="studydashboard">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i> Study Guide
+                </a>
+              </li>
+              <li *ngIf="loggedIn()" class="nav-link">
+                <a routerLink="account">
+                  <i class="fa fa-user" aria-hidden="true"></i> {{loggedInUser()}}
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+      </header>
+    </div>
+  </div>
+      <div class="container">
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+      <footer style="margin-top: 25px; margin-left: 10px">
+          <section>
+              <a href="https://certifiedspanish.com/aesthetics-feedback/" 
+                target="_blank"
+                title="Beta Feedback">Aesthetics Feeback</a>
+          </section>
+          <section style="margin-top: 5px">    
+              <a href="https://certifiedspanish.com/content-feedback/" 
+                target="_blank"
+                title="Content Feedback">Test Feeback</a>
+          </section>
+      </footer>
+</div>
+
+<div *ngIf="showErrorModal" class="cgiModal">
+  <div class="cgiModal-content">
+    <span class="modalClose" (click)="closeErrorModal()">×</span>
+    <p class="errorMessage">{{errorMessage}}</p>
+  </div>
+</div>
+
+<div *ngIf="showInfoModal" class="cgiModal">
+  <div class="cgiModal-content">
+    <span class="modalClose" (click)="closeInfoModal()">×</span>
+    <p class="infoMessage">{{infoMessage}}</p>
+  </div>
+</div>

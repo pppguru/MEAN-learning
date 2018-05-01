@@ -1,0 +1,9 @@
+./etc
+./var
+./bin/dev-server
+.eslint
+.gitignore
+.istanbul.yml
+CHANGELOG.md
+Makefile
+README.md

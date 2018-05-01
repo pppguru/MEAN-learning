@@ -1,0 +1,38 @@
+@import 'app';
+
+@media only screen and (max-width: 998px) {
+    .headerWidth {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .headerWidth {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 999px) {
+    .headerWidth {
+        width: 100%;
+    }
+}
+
+.guideBtn {
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: transparent;
+    color: black;
+}
+
+.guideImg {
+    width: 150px;
+}
+
+.guideTxt {
+    font-size: .9em
+}
+
+.undoSelection {@extend .center; @extend .point; @extend .italic; color: $app-light-blue; font-size: 9pt;
+&:hover {color: $app-beige; @extend .underline}
+}

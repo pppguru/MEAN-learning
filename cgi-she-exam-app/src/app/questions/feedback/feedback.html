@@ -1,0 +1,29 @@
+            <div class="warningwrapper" 
+                    (click)="feedback()" 
+                    *ngIf="!feedbackSubmitted">
+                <img src="/assets/img/warningicon.png" 
+                    class="warningicon"
+                    title="feedback icon" 
+                    alt="feedback icon" />  
+                    feedback or issues with this question?
+            </div>
+            <div style="color: forestgreen; font-weight: bold" class="topMargin"
+                *ngIf="feedbackSubmitted">
+                Your feedback has been submitted.  Thank you!
+            </div>
+
+            <div class="topMargin" *ngIf="enableFeedback">
+                <textarea class="form-control" 
+                    [(ngModel)]="feedbackText"
+                    placeholder="please enter your feedback" 
+                    rows="5">
+                    
+                </textarea>
+                <div class="buttonMargin topMargin">
+                    <button class="btn btn-sm btn-primary" 
+                            style="width: 100%"
+                            (click)="submitFeedback()">
+                        Submit Feedback
+                    </button>
+                </div>
+            </div>

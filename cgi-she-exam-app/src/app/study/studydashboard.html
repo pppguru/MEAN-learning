@@ -1,0 +1,55 @@
+<div class="container" style="background-color: #eaeaea">
+ <div class="row" style="margin-bottom: 25px">
+         <div class="col-md-12">
+             <div class="row">
+                 <div style="width: 100%"> 
+                    <h2 class="fontSizeLarge headerWidth">Study Dashboard</h2>
+                 </div>
+             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 bottomMargin">
+                    <div class="mostRecent" (click)="selected('category')">
+                        <div class="centerAlign" style="color: white">
+                            <i class="fa fa-bars fa-4x" aria-hidden="true"></i>
+                        </div>
+                        <div class="dTextBreak"></div>
+                        <div class="dTextBottom">
+                            <span>Study by Category</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 bottomMargin">
+                    <div class="anotherExam" (click)="selected('random')">
+                        <div class="centerAlign" style="color: white">
+                            <i class="fa fa-random fa-4x" aria-hidden="true"></i>
+                        </div>
+                        <div class="dTextBreak"></div>
+                        <div class="dTextBottom">
+                            <span>Random Terms</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 bottomMargin">
+                    <div class="study" (click)="selected('performance')">
+                        <div class="centerAlign" style="color: white">
+                            <i class="fa fa-bar-chart fa-4x" aria-hidden="true"></i>
+                        </div>
+                        <div class="dTextBreak"></div>
+                        <div class="dTextBottom">
+                            <span>Your Performance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section style="margin-top: 35px; margin-left: 10px">
+<a (click)="downloadTerms()" style="cursor: pointer">
+<i class="fa fa-download" aria-hidden="true"></i> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download Terms PDF</a>
+</section>

@@ -1,0 +1,38 @@
+@import 'app';
+
+.categoryrow {
+    display: table;
+    padding: 5px;
+    cursor: pointer
+}
+
+.categoryrowSel {
+    @extend .categoryrow;
+    width: 100%;
+    background-color: azure;
+    font-weight: bold
+}
+
+.categoryselect {
+    display: table-cell;
+    padding-right: 30px
+}
+
+.categoryname {
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.categorycontainer {
+    margin-top: 5px;
+    overflow: auto
+}
+
+.submitcategories {
+    margin-top: 16px
+}
+
+.categorySelector {
+    background-color: floralwhite
+}

@@ -1,0 +1,8 @@
+@import 'app';
+
+.mc {margin-bottom: 2.5px}
+.mc p {font-size: 12pt}
+
+.mcFrame {border: 1px solid lightgray; padding: 8px; border-radius: 4px; margin-top: 15px}
+
+.audio {@extend .point; padding-left: 10px}

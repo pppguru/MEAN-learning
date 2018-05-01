@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="col-md-4 col-md-offset-4">
+      <div style="margin-bottom: 18px">
+        <h2>Register for an account</h2>
+      </div>
+      <div>
+        <span>Register with one of the following providers</span>
+        <div>
+                <img src="../assets/img/facebook.png" 
+                    (click)="facebook()" 
+                    class="socialButton"
+                    alt="facebook authentication" 
+                    title="facebook authentication" />
+                    
+                <img src="../assets/img/google.png" 
+                    (click)="google()" 
+                    class="socialButton"
+                    alt="google authentication" 
+                    title="google authentication" />
+          
+      </div>
+      <div style="margin-top: 12px; margin-bottom: 17px">
+      <p>
+        OR    
+      </p>
+      <p>
+        Create your own CGI account    
+      </p>
+      </div>
+    <form #f="ngForm" role="form" style="max-width: 400px">
+      <div class="form-group">
+        <label for="rsEmail">Email Address</label>
+        <input type="email" [(ngModel)]="rs.email" name="email"
+            (blur)="emailValidation()"
+            class="form-control" placeholder="email address" id="rsEmail">
+        <div *ngIf="validationMessage != ''" class="errorMessage">{{validationMessage}}</div>    
+      </div>
+      <div class="form-group">
+          <label for="rsPassword"><em>Password must be at least 8 characters long</em></label>
+        <input type="password" [(ngModel)]="rs.password" name="password"
+            class="form-control" placeholder="password" id="rsPassword">
+      </div>
+      <div class="form-group">
+        <input type="password" [(ngModel)]="rs.passwordConfirmation" (keyup)="formKeyup($event)"
+            name="passwordConfirmation"
+            class="form-control" placeholder="password confirmation">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-sm btn-primary"
+        (click)="register($event)" 
+        [disabled]="submitButtonState()">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row">
+    You are studying with the following categories
+</div>
+<div class="row" style="margin-top: 10px">
+    <div class="row nameback" *ngFor="let c of categories">
+        <h5>{{c.name}}</h5>
+    </div>
+    <div class="row undoCategories" (click)="resetCategories()">
+        choose new categories
+    </div>
+</div>

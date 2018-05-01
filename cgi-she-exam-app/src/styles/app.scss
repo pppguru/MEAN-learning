@@ -1,0 +1,147 @@
+$app-red-orange:   #d0493d;
+$app-teal-blue: #00617f;
+$app-beige: #d3d3c4;
+$app-light-blue: #46b1e1;
+$app-main-gray: #808284;
+$app-tan: #a89968;
+$app-dark-gray: #585858;
+$app-green: #74aa50;
+$app-black: #231f20;
+$app-brown: #693f23;
+
+$app-font-small: helvetica;
+$app-font-medium-large: 'cabin';
+
+$app-font-size-xtra-small: 1.8vm;
+$app-font-size-small: 2.2vm;
+$app-font-size-medium: 2.8vm;
+$app-font-size-large: 3.5vm;
+
+body
+{
+    font-family: $app-font-small;    
+}
+
+h3 
+{
+    font-family: $app-font-medium-large;
+    color: $app-dark-gray;        
+}
+
+h2
+{
+    font-family: $app-font-medium-large;
+    font-size: $app-font-size-large;
+    color: $app-dark-gray;        
+}
+
+h5 
+{
+    font-family: $app-font-size-small;
+    color: $app-dark-gray;        
+}
+
+form {
+    border: none;
+}
+
+//text colors
+.greenText {color: $app-green;}
+.lightBlueText {color: $app-light-blue;}
+.tealBlueText {color: $app-teal-blue;}
+.mainGrayText {color: $app-main-gray;}
+
+//text size
+.fontSizeSmall {font-size: $app-font-size-small;}
+.fontSizeLarge {font-size: $app-font-size-large;}
+
+.nav-link a {color: white;
+        &:hover {text-decoration: underline}
+        }
+        
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #000000;
+    background-image: none;
+}
+
+.row {margin-top: 5px}
+.margincenter {margin: 0 auto}
+.autocenter {@extend .margincenter;
+    width:80% }
+.center {text-align: center}
+.point {cursor: pointer}
+.underline {text-decoration: underline}
+.italic {font-style: italic}
+.bold {font-weight: bold}
+.notBold {font-weight: normal}
+
+.cgiLogo {height: 50px; margin-top: -30px}
+
+.socialButton {
+    @extend .imgLink;
+    height: 50px
+}
+.imgLink {@extend .point}
+
+//Validation
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.errorMessage {color: $app-red-orange; font-size: $app-font-size-small; 
+        padding: 5px; font-weight: bold}
+
+.infoMessage {color: $app-green; font-size: $app-font-size-small; 
+        padding: 5px; font-weight: bold}
+
+.cgiModal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.cgiModal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modalClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.modalClose:hover,
+.modalClose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.spanishEnglishSwitchLink {
+    color: $app-main-gray;
+    font-style: italic;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.updateSuccess {
+    @extend .greenText;
+    font-weight: bold;
+}

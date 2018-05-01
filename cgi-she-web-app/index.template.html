@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cgiSheApp">
+  <head>
+    <title>CGI Admin Web Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+   
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="IndexController as i">
+  <div class="container-fluid" style="margin-top: 20px">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="main">
+          <i class="fa fa-home fa-1x"></i>
+      </a>
+    </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a ui-sref="choice">Terms</a></li>
+        <li><a ui-sref="category">Categories</a></li>
+        <li><a ui-sref="user">Users</a></li>
+        <li><a ui-sref="exam">Exams</a></li>
+        <li><a ui-sref="studyusers">Study Users</a></li>
+      </ul>
+      
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <div ng-show="i.loggedIn()" style="margin-right: 10px">{{i.userMessage()}} &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span>
+        <a href="#"><i class="fa fa-sign-out" aria-hidden="true" 
+            ng-show="i.loggedIn()"
+            ng-click="i.logout()" title="Logout"></i></a>
+        </div>
+      </li>
+    </ul>
+     </div>  
+    
+  </div>
+</nav>
+
+    <div class="container-fluid">
+      <notifications-bar class="notifications" closeIcon="fa fa-times-circle"></notifications-bar>
+      <ui-view></ui-view>
+    </div>
+    
+  </body>
+</html>

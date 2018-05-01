@@ -1,0 +1,5 @@
+#!/bin/sh
+
+BIN=$(pwd)/node_modules/.bin
+
+$BIN/nodemon ./dist/index.js

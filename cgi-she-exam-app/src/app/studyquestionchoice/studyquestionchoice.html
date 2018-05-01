@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="row" style="margin-bottom: 25px" *ngIf="!picked">
+         <div class="col-md-12">
+             <div class="row">
+                 <div style="text-align: center; width: 100%"> 
+                    <h2 class="fontSizeLarge headerWidth" style="width: 100%">Choose a Question Type to Study With</h2>
+                 </div>
+             </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-12">
+            <div class="row" *ngIf="!picked">
+                <div class="col-md-2">
+                    <button class="btn guideBtn"
+                    [disabled]="fetching"
+                     (click)="start('Multiple Choice English')"
+                     title="Multiple Choice Questions with answers in English">
+                     <img src="/assets/img/Multiple Choice English Icon.png" class="guideImg" title="Mutiple Choice w/English choices" />
+                     <p class="guideTxt">English Choices</p>
+                     </button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn guideBtn"
+                    [disabled]="fetching"
+                     (click)="start('Multiple Choice Spanish')"
+                     title="Multiple Choice Questions with answers in Spanish">
+                     <img src="/assets/img/Multiple Choice Spanish Icon.png" class="guideImg" title="Multiple Choice w/Spanish choices" />
+                     <p class="guideTxt">Spanish Choices</p>
+                     </button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn guideBtn" 
+                    [disabled]="fetching"
+                    (click)="start('Matching')">
+                    <img src="/assets/img/Matching Icon.png" class="guideImg" title="Term Matching" />
+                    <p class="guideTxt">Matching</p>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn guideBtn" 
+                    [disabled]="fetching"
+                    (click)="start('Grouping')">
+                    <img src="/assets/img/Grouping Icon.png" class="guideImg" title="Category Grouping" />
+                    <p class="guideTxt">Grouping</p>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn guideBtn" 
+                    [disabled]="fetching"
+                    (click)="start('FlashCard')">
+                    <img src="/assets/img/Flashcards Icon.png" class="guideImg" title="Flashcards" />
+                    <p class="guideTxt">Flashcards</p>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn guideBtn" 
+                    [disabled]="fetching"
+                    (click)="start('Translate')">
+                    <img src="/assets/img/Translate Icon.png" class="guideImg" title="Translation" />
+                    <p class="guideTxt">Translation</p>
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="text-align: center" *ngIf="picked">
+                <h4 style="margin-right: 20px; display: inline">{{studyType}}</h4> 
+                <span class="undoSelection" (click)="resetStudyType()">leave</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="margin-top: 10px" *ngIf="fetching && !groupCatWarning">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="row">
+            <h3>Gathering your list of terms and questions to study</h3>
+            <div style="margin-top: 5px"></div>
+            <i class="fa fa-refresh fa-spin fa-2x fa-fw" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 10px" *ngIf="groupCatWarning">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="row">
+            <h3 style="color: firebrick">
+                You must choose random categories or choose at least 5 categories for the grouping question functionality
+            </h3>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="col-md-4 col-md-offset-4">
+        <div [ngSwitch]="currentQuestionType">
+            <multipleChoice *ngSwitchCase="'Multiple Choice English'" 
+                    (playAudio)="playAudio($event)"
+                    [questionType]="'Multiple Choice English'"
+                    [mcTerms]="studyMCTerms"
+                    [instructions]="instructions"
+                    [mode]="'study'">
+                </multipleChoice>
+            <multipleChoice *ngSwitchCase="'Multiple Choice Spanish'" 
+                    (playAudio)="playAudio($event)"
+                    [mcTerms]="studyMCTerms"
+                    [questionType]="'Multiple Choice Spanish'"
+                    [instructions]="instructions"
+                    [mode]="'study'">
+                </multipleChoice>
+            <matching *ngSwitchCase="'Matching'" 
+                    [mTerms]="studyMTerms"
+                    [instructions]="instructions"
+                    [mode]="'study'">
+                </matching>
+            <grouping *ngSwitchCase="'Grouping'" 
+                    [gTerms]="studyGTerms"
+                    [instructions]="instructions"
+                    [mode]="'study'">
+                </grouping>
+            <flashcard *ngSwitchCase="'FlashCard'" 
+                [terms]="studyTerms">
+            </flashcard>
+            <fillinblank *ngSwitchCase="'Translate'"
+                [terms]="studyTerms">
+            </fillinblank>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 45px" *ngIf="!termsRandom">
+    <div class="col-md-4 col-md-offset-4">
+        <selection [categories]="categoriesChosen"></selection>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+/* @flow */
+
+import Router from 'http/Router';
+import TerminologyController from './controllers/TerminologyController';
+import TerminologyService from './service/TerminologyService';
+import type { Server } from 'http/index';
+
+export const register = (server: Server, options: Object, next: Function) => {
+  const controller = new TerminologyController(new TerminologyService());
+  const router = new Router({server, resource: 'terms'});
+
+  router
+    .post('/exclusions')
+    .authorize('urn:cgi:permission:term exclusions::create')
+    .bind(controller, 'exclude');
+
+  router
+    .post('/{sourceId}/languages/{languageId}/exclusions')
+    .authorize('urn:cgi:permission:term exclusions::create')
+    .bind(controller, 'exclude');
+
+  router
+    .get('')
+    .authorize('urn:cgi:permission:terms::list')
+    .bind(controller, 'list');
+
+  router
+    .get('/languages/{language}')
+    .authorize('urn:cgi:permission:terms::list')
+    .bind(controller, 'list');
+
+  router
+    .put('/{id}')
+    .authorize('urn:cgi:permission:terms::update')
+    .bind(controller, 'update');
+
+router
+    .get('/{id}')
+    .authorize('urn:cgi:permission:terms::view')
+    .bind(controller, 'fetch');
+
+router
+    .get('/{id}/translations/{language}')
+    .authorize('urn:cgi:permission:terms::view')
+    .bind(controller, 'getTranslations');
+
+router
+  .get('export/all')
+  .authorize('urn:cgi:permission:terms::view')
+  .bind(controller, 'allTermsWithTranslations');
+
+  router.register(next);
+};
+
+register.attributes = {
+  name: 'Terminology resource service',
+  version: '0.0.1'
+};

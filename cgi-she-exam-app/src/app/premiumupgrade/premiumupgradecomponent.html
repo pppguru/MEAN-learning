@@ -1,0 +1,122 @@
+
+        <div class="premierContainer">
+            <div *ngIf="premieruser">
+              <div class="premierTitle">
+                <i class="fa fa-star-o" aria-hidden="true"></i> Your account has premier status and unrestricted access
+              </div>
+                <div class="premierdeactivate">
+                  Premier status is provided through a monthly $4.99 fee 
+                  
+                  <div class="premiercancel" data-toggle="modal" data-target="#cancelModal">cancel subscription</div>
+
+                  <div class="modal fade" role="dialog" id="cancelModal">
+                    <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Account Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to cancel and downgrade your account?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" 
+                            class="btn btn-primary" data-dismiss="modal" (click)="cancel()">Confirm</button>
+                          <button type="button" 
+                            class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+            <div *ngIf="!premieruser">
+                <div class="premierTitle">
+                  <i class="fa fa-star-half-o" aria-hidden="true"></i> Your account has standard status and restricted access
+                </div>
+                <div class="premiersubscribe">
+                    Premier status and unrestricted access membership is $4.99 / month
+                </div>
+
+                <div class="premieractivate">
+                    <button class="btn btn-sm btn-default" 
+                        style="font-size: 11pt"
+                        (click)="activate()" [disabled]="activatingStudy">
+                      <i class="fa fa-star-o" aria-hidden="true"></i> Activate Premier Subscription
+                      <br />
+                      <i class="fa fa-paypal" aria-hidden="true"></i> with PayPal Account
+                    </button>
+                    <div style="margin-top: 10px"></div>
+                    <button class="btn btn-sm btn-default" 
+                        style="font-size: 11pt"
+                        (click)="enterCC()" [disabled]="activatingStudy">
+                      <i class="fa fa-star-o" aria-hidden="true"></i> Activate Premier Subscription
+                      <br />
+                      <i class="fa fa-credit-card" aria-hidden="true"></i> with Credit Card
+                    </button>
+
+                    <div style="margin-top: 10px; margin-left: 5px; margin-right: 5px" *ngIf="showCC">
+                      <form #f="ngForm" role="form" style="max-width: 100%; border: none">
+                        <div class="form-group">
+                          <label for="cardNumber">Card Number</label>
+                          <input type="number" [(ngModel)]="ccCardNumber" 
+                                class="form-control control-width"
+                              name="cardNumber" maxlength="16"
+                              placeholder="card number" required>
+                        </div>
+                    
+                          <div style="margin-top: 10px">
+                          <label for="dob">Expiration</label>
+                          <div class="form-inline">
+                            <div class="form-group">
+                              <select [(ngModel)]="ccMonth" 
+                              name="month"
+                              class="form-control control-width" 
+                              style="width: 50px" required>
+                              <option *ngFor="let month of months" value="{{month}}">
+                                {{month}}
+                              </option>
+                            </select>
+                              <select [(ngModel)]="ccYear" 
+                              class="form-control control-width" style="width: 65px" 
+                                name="year" required>
+                              <option *ngFor="let year of years" value="{{year}}">
+                                {{year}}
+                              </option>
+                            </select>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div style="margin-top: 10px"></div>
+                        <div class="form-group">
+                          <label for="ccv">3 or 4 digit CCV</label>
+                          <input type="number" [(ngModel)]="ccCCV" 
+                                class="form-control control-width"
+                                style="width: 90px"
+                              name="ccv" maxlength="4"
+                              placeholder="CCV" required>
+                        </div>
+
+                        <div style="margin-top: 15px">
+                            <button class="btn btn-sm btn-default" 
+                              (click)="submitPayment()"
+                              [disabled]="paymentDisabled() || activatingStudy">
+                                <i class="fa fa-lock" aria-hidden="true"></i> 
+                                  Submit Payment 
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                      </form>
+                    </div>
+
+                    <div *ngIf="activatingStudy">
+                    <i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true">
+                    </i>
+                    <span>Please wait...</span>
+                    </div>
+                </div>
+            </div>
+        </div>

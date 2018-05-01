@@ -1,0 +1,100 @@
+{
+  "sourceMaps": "inline",
+  "presets": [
+    "node5"
+  ],
+  "plugins": [
+    "transform-flow-strip-types",
+    "transform-class-properties",
+    [
+      "module-alias",
+      [
+        {
+          "src": "./src/http",
+          "expose": "http"
+        },
+        {
+          "src": "./src/logging",
+          "expose": "logging"
+        },
+        {
+          "src": "./src/common/models/Base",
+          "expose": "models/Base"
+        },
+        {
+          "src": "./src/users/",
+          "expose": "users"
+        },
+        {
+          "src": "./src/nationalities/",
+          "expose": "nationalities"
+        },
+        {
+          "src": "./src/examinations/",
+          "expose": "examinations"
+        },
+        {
+          "src": "./src/terminology/",
+          "expose": "terminology"
+        },
+        {
+          "src": "./src/categories/",
+          "expose": "categories"
+        },
+        {
+          "src": "./src/languages/",
+          "expose": "languages"
+        },
+        {
+          "src": "./src/security",
+          "expose": "security"
+        },
+        {
+          "src": "./src/data/orm",
+          "expose": "data/orm"
+        },
+        {
+          "src": "./src/javascript/",
+          "expose": "javascript"
+        },
+        {
+          "src": "./src/exceptions/",
+          "expose": "exceptions"
+        },
+        {
+          "src": "./etc/testing",
+          "expose": "testing"
+        },
+        {
+          "src": "./src/email",
+          "expose": "email"
+        },
+        {
+          "src": "./src/subscriptions",
+          "expose": "subscriptions"
+        },
+        {
+          "src": "./src/payment",
+          "expose": "payment"
+        },
+        {
+          "src": "./src/audit/",
+          "expose": "auditing"
+        }
+      ]
+    ]
+  ],
+  "env": {
+    "production": {
+      "ignore": [
+        "**/specs/*"
+      ]
+    }
+  },
+  "ignore": [
+    "node_modules/*",
+    "coverage/*"
+  ],
+  "comments": false,
+  "compact": "auto"
+}

@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const path = require('path');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config');
+
+let tcp_port = process.env.CLIENT_PORT || 4000;
+
+new WebpackDevServer(webpack(config), {
+  contentBase: path.join(__dirname, './dist'),
+  publicPath: config.output.publicPath,
+  historyApiFallback: true,
+  hot: true,
+  stats: {
+    colors: true
+  }
+}).listen(tcp_port, 'localhost', function (err) {
+  if (err) console.log(err);
+  console.log(`Listening at localhost:${tcp_port}`);
+});

@@ -1,0 +1,93 @@
+@import 'app';
+
+.bottomMargin { margin-bottom: 20px }
+
+.iconCommon {
+    padding: 30px;
+    border: 1px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-family: $app-font-medium-large;
+    @extend .margincenter;
+    @extend .bottomMargin;
+}
+
+.iconDimensions {
+    width: 220px;
+    height: 200px;
+}
+
+.mostRecent {
+    background-color: rgb(0,97,126);
+    @extend .iconDimensions;
+    @extend .iconCommon;
+    @extend .dIcon;
+}
+
+.anotherExam {
+    background-color: rgb(71,177,225);
+    @extend .iconDimensions;
+    @extend .iconCommon;
+    @extend .dIcon;
+}
+
+.study {
+    background-color: rgb(116,171,80);
+    @extend .iconDimensions;
+    @extend .iconCommon;
+    @extend .dIcon;
+}
+
+.centerAlign {
+    text-align: center;
+}
+
+.centerTextAlign {
+    text-align: center;
+    display: block;
+}
+
+.dIcon {
+   cursor: pointer;
+   color: white;
+   position: relative;
+}
+
+.dTextBottom {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+}
+
+.dTextBreak {
+    margin-top: 35px
+}
+
+.resultImg {
+    width: 120px
+}
+
+.singleScore {
+    position: absolute;
+    top: 64px;
+    left: 96px;
+    font-size: 30pt;
+    color: cadetblue;
+}
+
+.doubleScore {
+    position: absolute;
+    top: 64px;
+    left: 86px;
+    font-size: 30pt;
+    color: cadetblue;
+}
+
+.tripleScore {
+    position: absolute;
+    top: 70px;
+    left: 86px;
+    font-size: 20pt;
+    color: cadetblue;
+}
+

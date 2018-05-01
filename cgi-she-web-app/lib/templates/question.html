@@ -1,0 +1,72 @@
+<div ng-init="q.init()"></div>
+
+<div style="margin-top: 10px">
+	<select ng-change="q.typeChanged()" ng-model="q.selectedType">
+        <option value="grouping">Grouping</option>
+        <option value="matching">Matching</option>
+		<option value="multipleChoice">Multiple Choice</option>
+	</select>	
+</div>
+
+<div class="leftPaneList">
+	<button class="btn btn-small btn-info" ng-click="q.addQuestion()"
+		 style="margin-top: 5px; margin-left: 3px">New Question</button>
+	
+	<div style="margin: 5px" ng-show="q.questionsLoading">
+		<i class="fa fa-refresh fa-spin"></i>
+	</div>	
+	<div ng-repeat="qt in q.questions" style="margin-top: 5px">
+		<p style="width: 150px">
+			<span class="questionSelect" ng-click="q.questionSelect($index)">{{qt.answer}}</span>
+		</p>
+	</div>
+</div>	
+
+<div style="display: inline-block; vertical-align: top; margin-left: 10px" ng-show="q.isEditing">
+	<div class="rowContainer">
+		<div class="leftLabel algTop">Phase*</div>
+		<div class="rightContent">
+			<select ng-model="q.question.phase" class="form-control">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		</div>
+		<div class="tip" title="The phase of questioning when the question can appear in an exam"></div>
+	</div>
+	<div class="rowContainer">
+		<div class="leftLabel algTop">Question*</div>
+		<div class="rightContent">
+			<textarea class="qtArea form-control" ng-model="q.question.text"></textarea>
+		</div>
+		<div class="tip" title="The question the student will read"></div>
+	</div>
+	<div class="rowContainer">
+		<div class="leftLabel algTop">Answer*</div>
+		<div class="rightContent">
+			<input type="text" class="form-control" ng-model="q.question.answer" />
+		</div>
+		<div class="tip" title="The answer to the question"></div>
+	</div>
+    <div class="rowContainer">
+		<div class="leftLabel algTop">Active</div>
+		<div class="rightContent">
+			<input type="checkbox" ng-model="question.active" class="form-control" />
+		</div>
+		<div class="tip" title="The answer to the question"></div>
+	</div>
+	<div class="rowContainer">
+		<div class="leftLabel algTop"></div>
+		<div class="rightContent" style="margin-top: 8px">
+			<button class="btn btn-sm btn-primary" 
+			ng-disabled="q.saveDisabled()"
+			ng-click="q.saveQuestion()">Save</button>
+		</div>		
+	</div>
+</div>
+
+
+<div style="display: inline-block; vertical-align: top; margin-left: 20px; position: relative" ng-show="q.isEditing">
+	<question questiontype="q.selectedType" questiontitle="q.question.title" 
+		prototype="true" question="q.question" style="position: fixed; top: 90px"></question>	
+</div>

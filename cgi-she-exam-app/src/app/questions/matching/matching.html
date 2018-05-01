@@ -1,0 +1,55 @@
+<div *ngIf="ready" style="margin-bottom: 6px; text-align: center; font-style: italic">
+    <span>{{instructions}}</span>
+</div>
+<div class="mFrame">
+    <div *ngFor="let t of terms" class="m">
+        <div *ngIf="!t.matched">
+        <div class="group" 
+                draggable="true"
+                (dragstart)="dragstart($event, t.id)"
+                (drop)="dropped($event, t.id)"
+                (dragover)="dragover($event)">
+            <div [ngClass]="{text: isEnglish(t), spanishtext: isSpanish(t)}">
+                <div class="dragbars"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                <div class="checkterm">
+                    <input type="checkbox" 
+                    id="{{t.id}}"
+                    *ngIf="t.matchedchoice == null"
+                    [(ngModel)]="t.checked" 
+                    [checked]="t.checked"
+                    (ngModelChange)="checkChanged(t)" />
+                </div>
+                {{t.text}}</div>
+            <div *ngIf="t.matchedchoice != null" class="bottommatchedtext">
+                <div [innerText]="t.matchedchoice.text" style="display: table-cell"></div>
+                <div class="undo" (click)="undo(t)">
+                        <i class="fa fa-undo" aria-hidden="true"></i> undo
+                </div>
+            </div>
+            <div *ngIf="t.matchedchoice != null && ready" style="padding: 5px; margin-top: 5px">
+                <i *ngIf="!t.success" class="fa fa-meh-o fibFail" aria-hidden="true"> 
+                    <span style="font-size: 10pt">oops</span>
+                </i>
+                <i *ngIf="t.success" class="fa fa-check-circle-o  fibSuccess" aria-hidden="true"> 
+                    <span style="font-size: 10pt">nice work!</span>
+                </i>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div style="margin-top: 25px">
+        <div *ngIf="complete" (click)="next()" style="margin-top: 20px; text-align: center; width: 90%; cursor: pointer">
+            <i class="fa fa-caret-square-o-right fa-3x nextButton" aria-hidden="true"></i>
+            <span class="nextQuestion">Next Question</span>
+        </div>
+
+        <section *ngIf="ready">
+            <studyscore></studyscore>
+        </section>
+        <section style="margin-top: 50px" *ngIf="ready">
+            <feedback [enableFeedback]="enableFeedback" [feedbackSubmitted]="feedbackSumitted" 
+            [currentQuestion]="currentQuestion">
+            </feedback>
+        </section>
+    </div>
+</div>

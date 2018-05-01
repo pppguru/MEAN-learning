@@ -1,0 +1,7 @@
+@import 'app';
+
+.undoCategories {@extend .center; @extend .point; @extend .italic; color: $app-light-blue;
+&:hover {color: $app-beige; @extend .underline}
+}
+
+.nameback {background-color: aliceblue}

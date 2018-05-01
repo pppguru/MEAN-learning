@@ -1,0 +1,35 @@
+<div style="width: 100%; margin: auto 0px">
+
+    <input type="text" placeholder="search" 
+        *ngIf="!loading"
+        [(ngModel)]="searchtext" 
+        (keyup)="searchChanged()" class="form-control" />
+    <i class="fa fa-refresh fa-spin fa-fw" 
+        *ngIf="loading"
+        aria-hidden="true"></i>
+    <div class="categorycontainer">
+        <div class="categorySelector">
+            <div *ngFor="let c of categories" class="categoryrow" (click)="selectCategory(c)">
+                <div class="categoryselect">
+                    <i class="fa fa-check-square-o" 
+                        aria-hidden="true"
+                        *ngIf="c.selected">
+                    </i>
+                    <i class="fa fa-square-o" 
+                        aria-hidden="true"
+                        *ngIf="!c.selected">
+                    </i>
+                </div>
+                <div class="categoryname">
+                    {{c.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submitcategories">
+        <button class="btn-info" 
+         style="width: 100%"
+         [disabled]="submitDisabled()"
+         (click)="submit()">Submit</button>
+    </div>
+</div>

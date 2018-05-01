@@ -1,0 +1,25 @@
+<div>
+	<div class="directiveQuestionAdmin" ng-if="prototype == true">
+		<strong>Title:</strong> {{questiontitle}} : <strong>Type:</strong> {{questiontype}}
+	</div>
+	<div style="margin-top: 6px; border: 1px solid #eaeaea; padding: 5px">
+		<div>
+			<p style="max-width: 350px">{{question.text}}</p>
+		</div>	
+		<div style="width: 300px">
+			<div ng-if="question.instructions.length > 0" style="font-size: 9pt; margin-bottom: 4px">
+				<em>{{question.instructions}}</em>
+			</div>
+			<div style="display: table">
+				<div style="display: table-row" ng-repeat="eq in question.choices">
+					<div style="display: table-cell">
+						<input type="radio" name="question.questionId" />
+					</div>	
+					<div style="display: table-cell; padding-left: 8px">
+						<span>{{eq.text}}</span>
+					</div>	
+				</div>	
+			</div>	
+		</div>
+	</div>
+</div>

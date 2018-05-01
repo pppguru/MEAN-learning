@@ -1,0 +1,28 @@
+$buttonPaddding: 8px;
+$buttonFontSize: 18px;
+$buttonMargin: 25px 2px 25px;
+$buttonWidth: 100%;
+
+.error {color: red}
+
+.fplink {
+    color: #337ab7;
+    cursor: pointer;
+    &:hover {text-decoration: underline; color: navy}
+}
+
+.btn-register {
+    padding: $buttonPaddding;
+    background-color: lightgreen;
+    font-size: $buttonFontSize;
+    margin: $buttonMargin;
+    width: $buttonWidth;
+}
+
+.btn-login {
+    padding: $buttonPaddding;
+    background-color: lightyellow;
+    font-size: $buttonFontSize;
+    margin: $buttonMargin;
+    width: $buttonWidth;
+}

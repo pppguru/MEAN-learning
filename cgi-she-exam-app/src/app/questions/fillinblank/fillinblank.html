@@ -1,0 +1,80 @@
+<div *ngIf="viewTranslate">
+<div style="display: table; width: 100%">
+    <div style="display: table-row">
+        <div *ngIf="SpanishToEnglish" 
+            style="display: table-cell">
+            {{term.value}}
+        </div>
+        <div *ngIf="!SpanishToEnglish" 
+            style="display: table-cell">
+            {{term.englishValue}}
+        </div>
+        <div style="display: table-cell">
+            <input type="text" class="form-control" [(ngModel)]="termInput" (keydown)="inputKey($event)" /> 
+        </div>
+    </div>
+    <div style="display: table-row">
+        <div style="display: table-cell"></div>
+        <div style="display: table-cell; padding-top: 15px">
+            <button class="btn translateBtn"
+            [disabled]="termInput == null || termInput.length == 0"
+            *ngIf="!complete"
+            (click)="entered()">Submit</button>
+        </div>
+    </div>
+    <div style="display: table-row">
+        <div style="display: table-cell"></div>
+        <div style="display: table-cell">
+            <div *ngIf="complete" 
+                [ngClass]="{fibSuccess: success, 
+                             fibFail: !success}">
+                    <i *ngIf="!success"
+                        class="fa fa-meh-o fa-2x" 
+                        aria-hidden="true"> <span *ngIf="!success">Oops</span>
+                    </i>
+                    <i *ngIf="success"
+                        class="fa fa-check-circle-o fa-2x" 
+                        aria-hidden="true"> <span *ngIf="success">Nice!</span>
+                    </i>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="complete && !success" 
+        style="display: table-row">
+        <div style="display: table-cell"></div>
+        <div style="display: table-cell">
+            <span class="undoSelection" (click)="showAnswer()">Show Answer {{translationText}}</span>
+        </div>
+    </div>
+    <div *ngIf="complete && !success" 
+        style="display: table-row; margin-top: 16px">
+        <div style="display: table-cell"></div>
+        <div style="display: table-cell">
+            <span class="undoSelection" (click)="giveCredit()">My Answer Should Be Correct</span>
+        </div>
+    </div>
+</div>
+
+    <div *ngIf="complete && displayNext()"
+        (click)="next()"
+        style="margin-top: 20px; text-align: center; width: 90%; cursor: pointer">
+        <i class="fa fa-caret-square-o-right fa-3x nextButton" aria-hidden="true"></i>
+        <span class="nextQuestion">Next Question</span>
+    </div>
+    <div *ngIf="!displayNext()" style="margin-top: 20px; text-align: center; width: 90%">
+        You've reached the end of the terms.  <span class="undoSelection" (click)="resetTerms()">reset</span>
+    </div>
+    <div style="margin-top: 25px">
+        <div class="spanishEnglishSwitchLink"
+            (click)="switchTerms()">{{termSwitchText()}}</div>
+    </div>
+    <section>
+        <studyscore></studyscore>
+    </section>
+    <section style="margin-top: 50px">
+        <feedback [enableFeedback]="enableFeedback"
+            [feedbackSubmitted]="feedbackSumitted"
+            [term]="term">
+        </feedback>
+    </section>
+</div>

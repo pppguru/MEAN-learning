@@ -1,0 +1,66 @@
+<div ng-init="ch.init()"></div>
+
+<div class="searchBar form-group">
+             <div style="display: inline-block; margin-left: 15px">
+                 <input type="text" placeholder="search..." 
+                        ng-change="ch.textSearch()" ng-model="ch.searchText"
+                        class="form-control" style="width: 140px" />
+             </div>      
+</div>
+<div class="leftPaneList">	
+	<div style="margin: 5px">
+		<input type="radio" name="language" checked="checked" ng-click="ch.language('English')" /> english 
+		<input type="radio" name="language" ng-click="ch.language('Spanish')" /> spanish
+	</div>
+	<div style="margin: 5px" ng-show="ch.choicesLoading">
+		<i class="fa fa-refresh fa-spin"></i>
+	</div>	
+	<div ng-repeat="choice in ch.choices track by $index" style="margin-top: 5px">
+		<p style="width: 150px">
+			<span class="questionSelect"
+             title="{{choice.value}}"
+             ng-click="ch.choiceSelect(choice)">{{choice.value}}</span>
+		</p>
+	</div>
+</div>	
+
+<div class="rightPaneEditor" ng-show="ch.choice !== null">
+	<div class="rowContainer">
+		<div class="leftLabel algTop">Term*</div>
+		<div class="rightContent">
+			<input type="text" ng-model="ch.choice.value" style="width: 500px" class="form-control" />
+		</div>
+	</div>
+    <div class="rowContainer">
+		<div class="leftLabel algTop">Translation*</div>
+		<div class="rightContent">
+			<span>{{ch.translation.value}}</span>
+		</div>
+	</div>
+	<div class="rowContainer">
+		<div class="leftLabel algTop">Categories*</div>
+		<div class="categoriesPaneList">
+			<div ng-repeat="cat in ch.choice.relations.categories" style="margin-top: 5px;">
+				<p style="width: 150px">
+					<span>{{cat.name}}</span>
+				</p>
+			</div>		
+		</div>
+	</div>
+    <div class="rowContainer">
+		<div class="leftLabel algTop"></div>
+		<div class="rightContent">
+			<button class="btn btn-sm btn-primary" 
+                ng-click="ch.save()"
+                title="Save Choice">
+                Save
+            </button>    
+            <button class="btn btn-sm btn-default" 
+                style="margin-left: 5px"
+                ng-click="ch.cancel()"
+                ng-show="ch.choices[0].id === null">
+                Cancel
+            </button>  
+		</div>
+	</div>
+</div>    

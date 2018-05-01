@@ -1,0 +1,20 @@
+@import 'app';
+
+.progressText {color: $app-main-gray}
+
+.examSubmit {
+    background-color: $app-teal-blue;
+    color: white;
+    &:hover {
+        color: $app-tan
+    }
+}
+
+.questionAudio {@extend .point}
+
+.buttonMargin {margin-left: 5px; margin-right: 5px}
+.topMargin {margin-top: 3px}
+
+.term {font-weight: bold; text-decoration: underline; color: black}
+
+.stuckText {opacity: 60%; font-size: 9pt; cursor: pointer; color: lightgray}
